@@ -205,16 +205,16 @@ void write_superblock(int fd) {
 	// TODO finish the superblock number setting
 	superblock.s_inodes_count = NUM_INODES;
 	superblock.s_blocks_count = NUM_BLOCKS;
-	superblock.s_r_blocks_count = NUM_BLOCKS / 20; //5% of filesystem; blocks reserved for super user usage
+	superblock.s_r_blocks_count = 0; //leaving as 0 for the lab
 	superblock.s_free_blocks_count = NUM_FREE_BLOCKS; //boot and super
 	superblock.s_free_inodes_count = NUM_FREE_INODES;
 	superblock.s_first_data_block = SUPERBLOCK_BLOCKNO; /* first superblock(after the 1-block boot block */
 	superblock.s_log_block_size = 0; // block size computed by 1024 << s_log_block_size
 	superblock.s_log_frag_size = 0;	//similarly, fragment size is the same computation
 	superblock.s_blocks_per_group = BLOCK_SIZE * 8; //bit map takes one block, 1024 bits enough to cover file system
-	superblock.s_frags_per_group = BLOCK_SIZE * 8; // to be changed
-	superblock.s_inodes_per_group = NUM_INODES; // all inodes in this group; to be changed
-	superblock.s_mtime = 0;				/* Mount time */
+	superblock.s_frags_per_group = BLOCK_SIZE * 8; //same as above
+	superblock.s_inodes_per_group = NUM_INODES; // all inodes in this group
+	superblock.s_mtime = 0;			/* Mount time */
 	superblock.s_wtime = current_time;	/* Write time */
 	superblock.s_mnt_count         = 0; /* Number of times mounted so far */
 	superblock.s_max_mnt_count     = -1; /* Make this unlimited */
