@@ -528,7 +528,7 @@ void write_hello_world_file_block(int fd)
     errno_exit("lseek");
   }
   int size = 12;
-  char* buf = "hello world\n";
+  char* buf = "Hello world\n";
   if(write(fd, buf, size) != size)
   {
     errno_exit("write");
