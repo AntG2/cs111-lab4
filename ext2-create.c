@@ -307,6 +307,7 @@ void write_block_bitmap(int fd)
 	{
 	  map_value[j] = 0xff;
 	}
+	map_value[NUM_BLOCKS / 8 - 1] = 0x80;
 	
 	if (write(fd, map_value, BLOCK_SIZE) != BLOCK_SIZE)
 	{
