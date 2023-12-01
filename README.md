@@ -8,12 +8,18 @@ with 2 directories, 1 regular file, and 1 symbolic link.
 make
 ```
 
-
 ## Running
-
-TODO
-
+```shell
+./ext2-create
+mkdir mnt
+sudo mount -o loop cs111-base.img mnt
+```
+or mount it onto an existing directory
 
 ## Cleaning up
-
-TODO
+```shell
+sudo umount mnt
+# or whichever directory the image is mounted to
+rmdir mnt
+make clean
+```
